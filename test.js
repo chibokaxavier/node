@@ -14,5 +14,5 @@
 //   console.log("this code will stop running after 7 seconds");
 // }, 1000);
 
-// console.log(__dirname);
+// console.log(__dirname); 
 // console.log(__filename);
