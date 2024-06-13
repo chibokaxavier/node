@@ -7,7 +7,15 @@
   </head>
   <body>
     <% const name = 'Xavier' %>
-    <p> <%= name %></p>
-    <p>Hi, trying out node js and home page </p>
+    <p><%= name %></p>
+    <p>Hi, trying out node js and home page</p>
+
+    <p>ALL BLOGS</p>
+    <% if(blogs.length>0){ %> <% blogs.forEach(blog=>{%>
+    <h3><%= blog.name %></h3>
+    <h2><%= blog.age %></h2>
+    <% }) %> <% } else { %>
+    <p>There are no blogs available</p>
+    <% } %>
   </body>
 </html>
