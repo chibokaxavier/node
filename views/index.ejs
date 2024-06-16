@@ -12,8 +12,9 @@
 
     <p>ALL BLOGS</p>
     <% if(blogs.length>0){ %> <% blogs.forEach(blog=>{%>
-    <h3><%= blog.name %></h3>
-    <h2><%= blog.age %></h2>
+    <h3><%= blog.title %></h3>
+    <h2><%= blog.snippet %></h2>
+    <h2><%= blog.body %></h2>
     <% }) %> <% } else { %>
     <p>There are no blogs available</p>
     <% } %>

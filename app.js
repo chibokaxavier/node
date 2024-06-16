@@ -50,8 +50,14 @@ app.get("/single-blog", (req, res) => {
     });
 });
 app.get("/", (req, res) => {
-  const blogs = [];
-  res.render("index", { title: "Home", blogs });
+  Blogs.find()
+    .sort({ createdAt: -1 })
+    .then((result) => {
+      res.render("index", { title: "Home", blogs: result });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 app.get("/about", (req, res) => {
   res.render("about");
