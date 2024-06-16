@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 const Blogs = require("./models/blogs");
+const app = express();
 const dbURI =
   "mongodb+srv://xavy:test1234@node.mvllel2.mongodb.net/node?retryWrites=true&w=majority&appName=node";
 mongoose
@@ -11,26 +12,24 @@ mongoose
   .catch((error) => {
     console.log(error);
   });
-const app = express();
-app.set("view engine", "ejs");
 
+app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(morgan("dev"));
-app.get("/add-blog", (req, res) => {
-  const blog = new Blogs({
-    title: "My Blog Title  22222222",
-    snippet: "My blog snippet",
-    body: "My blog body",
-  });
+
+app.post("/blog/create", (req, res) => {
+  const blog = new Blogs(req.body);
   blog
     .save()
     .then((result) => {
-      res.send(result);
+      res.redirect("/");
     })
     .catch((err) => {
       console.log(err);
     });
 });
+
 app.get("/all-blogs", (req, res) => {
   Blogs.find()
     .then((result) => {
