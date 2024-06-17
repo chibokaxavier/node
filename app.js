@@ -39,10 +39,11 @@ app.get("/all-blogs", (req, res) => {
       console.log(err);
     });
 });
-app.get("/single-blog", (req, res) => {
-  Blogs.findById("666db20a8ce9e07c533ee9f8")
+app.get("/blogs/:id", (req, res) => {
+  const id = req.params.id;
+  Blogs.findById(id)
     .then((result) => {
-      res.send(result);
+      res.render("single", { blog: result });
     })
     .catch((err) => {
       console.log(err);

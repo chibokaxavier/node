@@ -3,22 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= title %></title>
+    <title>Document</title>
   </head>
   <body>
-    <% const name = 'Xavier' %>
-    <p><%= name %></p>
-    <p>Hi, trying out node js and home page</p>
-
-    <p>ALL BLOGS</p>
-    <% if(blogs.length>0){ %> <% blogs.forEach(blog=>{%>
+   
+    <p>Single Blog</p>
     <a href="/blogs/<%= blog._id %>">
       <h3><%= blog.title %></h3>
       <h2><%= blog.body %></h2>
     </a>
 
-    <% }) %> <% } else { %>
-    <p>There are no blogs available</p>
-    <% } %>
+
   </body>
 </html>
