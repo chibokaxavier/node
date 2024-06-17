@@ -14,6 +14,7 @@ mongoose
   });
 
 app.set("view engine", "ejs");
+// this takes data from the web and encode it into an object
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(morgan("dev"));
