@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const morgan = require("morgan");
 const Blogs = require("./models/blogs");
 const app = express();
+const cors = require("cors");
 const dbURI =
   "mongodb+srv://xavy:test1234@node.mvllel2.mongodb.net/node?retryWrites=true&w=majority&appName=node";
 mongoose
@@ -18,6 +19,8 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(morgan("dev"));
+app.use(cors());
+app.use(express.json());
 
 app.post("/blog/create", (req, res) => {
   const blog = new Blogs(req.body);
@@ -29,6 +32,11 @@ app.post("/blog/create", (req, res) => {
     .catch((err) => {
       console.log(err);
     });
+});
+app.get("/api/data", (req, res) => {
+  res.json({ message: "Hello from the Node.js server!" });
+
+  // res.send("Hello from the Node");
 });
 
 app.get("/all-blogs", (req, res) => {
